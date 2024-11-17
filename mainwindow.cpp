@@ -5,17 +5,14 @@
 #include <QColor>
 #include <QTimer>
 #include <QMouseEvent>
-<<<<<<< HEAD
 #include <bits/stdc++.h>
 #include <QElapsedTimer>
 #include <QDebug>
 #include <QMessageBox>
-=======
 #include<bits/stdc++.h>
 #include<QElapsedTimer>
 #include <QDebug>
 #include<QMessageBox>
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
 
 #define maxHt 1000
 #define maxVt 1000
@@ -28,30 +25,24 @@
 #define A 10
 #define B 15
 #define baseLine_y -240
-<<<<<<< HEAD
 #define basket_height 40
 #define basket_width 100
-=======
 #define basket_height 100
 #define basket_width 100
 #define speed_parameter 30
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
 #define min_X -300
 #define max_X 300
 #define start_Y 300
 #define basket_offset 100
 
 using namespace std;
-<<<<<<< HEAD
 int prev_score=0;
 int score=0;
 int lives=5;
 int speed_parameter=20;
 int level=1;
-=======
 int score=0;
 int lives=5;
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
 
 bool game_closed=false;
 
@@ -78,10 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
         canvas.fill(Qt::white);
         ui->workArea->setPixmap(canvas);
     }
-<<<<<<< HEAD
     draw_canvas();
-=======
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> distrib(0, 5);
@@ -91,10 +79,7 @@ MainWindow::MainWindow(QWidget *parent)
     egg_array.push_back(Egg(lanes[index],start_Y));
     bs=Basket(50,baseLine_y);
     ui->lives->setText(QString::number(lives));
-<<<<<<< HEAD
     ui->level->setText(QString::number(level));
-=======
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::gameLoop);
     timer->start(1000/fps);
@@ -142,11 +127,8 @@ pair<int,int> MainWindow::plotPixel(int x,int y)
 void MainWindow::resetGame() {
     lives = 5;
     score = 0;
-<<<<<<< HEAD
     level=1;
     speed_parameter=20;
-=======
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
     egg_array.clear();
     random_device rd;
     mt19937 gen(rd());
@@ -225,7 +207,6 @@ void MainWindow::gameLoop() {
         int index= distrib(gen);
         egg_array.push_back(Egg(lanes[index],start_Y));
     }
-<<<<<<< HEAD
     if(score==10 && prev_score<10)
     {
         prev_score=score;
@@ -254,8 +235,6 @@ void MainWindow::gameLoop() {
         level++;
         ui->level->setText(QString::number(level));
     }
-=======
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
     frame_count++;
 }
 
@@ -284,7 +263,6 @@ void MainWindow::paintEvent(QPaintEvent *event) {
 
     for(int i=0;i<egg_array.size();i++)
     {
-<<<<<<< HEAD
         draw_bressenham_ellipse2(egg_array[i].x,egg_array[i].y,A,B,222, 214, 186);
     }
     // draw_bressenham_line(bs.x-basket_width/2,bs.y-basket_height/2,bs.x+basket_width/2,bs.y-basket_height/2,0,0,255);
@@ -296,19 +274,6 @@ void MainWindow::paintEvent(QPaintEvent *event) {
     // //     draw_bressenham_line(bs.x-basket_width/2+1,y,bs.x+basket_width/2-1,y,180,250,180);
     // // }
     draw_bressenham_ellipse(bs.x,bs.y+basket_height/2,basket_width/2,basket_height);
-
-=======
-        draw_bressenham_ellipse(egg_array[i].x,egg_array[i].y,A,B);
-    }
-    draw_bressenham_line(bs.x-basket_width/2,bs.y-basket_height/2,bs.x+basket_width/2,bs.y-basket_height/2,0,0,255);
-    draw_bressenham_line(bs.x+basket_width/2,bs.y-basket_height/2,bs.x+basket_width/2,bs.y+basket_height/2,0,0,255);
-    draw_bressenham_line(bs.x+basket_width/2,bs.y+basket_height/2,bs.x-basket_width/2,bs.y+basket_height/2,0,0,255);
-    draw_bressenham_line(bs.x-basket_width/2,bs.y+basket_height/2,bs.x-basket_width/2,bs.y-basket_height/2,0,0,255);
-    for(int y=bs.y-basket_height/2+1;y<bs.y+basket_height/2;y++)
-    {
-        draw_bressenham_line(bs.x-basket_width/2+1,y,bs.x+basket_width/2-1,y,180,250,180);
-    }
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
 }
 
 
@@ -364,7 +329,6 @@ void MainWindow::draw_bressenham_line(int x1, int y1, int x2, int y2, int r, int
     ui->workArea->setPixmap(canvas); // Update the canvas
 }
 
-<<<<<<< HEAD
 // void MainWindow::draw_bressenham_ellipse(int x_center, int y_center, int a, int b) {
 //     QPolygon polygon;
 
@@ -414,15 +378,11 @@ void MainWindow::draw_bressenham_line(int x1, int y1, int x2, int y2, int r, int
 //     painter.drawPoints(polygon); // Draw the collected points
 //     ui->workArea->setPixmap(canvas); // Update the canvas
 // }
-
-=======
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
 void MainWindow::draw_bressenham_ellipse(int x_center, int y_center, int a, int b) {
     QPolygon polygon;
 
     int x = 0, y = b;
     double d1 = b * b - a * a * b + (0.25 * a * a);
-<<<<<<< HEAD
 
     // First part of the ellipse (where b^2 * x < a^2 * y)
     while (b * b * x < a * a * y) {
@@ -435,7 +395,6 @@ void MainWindow::draw_bressenham_ellipse(int x_center, int y_center, int a, int 
 
         if (d1 < 0) {
             d1 += b * b * (2 * x + 3);
-=======
     while (b * b * x < a * a * y) {
         pair<int,int> point_pair=plotPixel(x_center+x,y_center+y);
         polygon << QPoint(point_pair.first, point_pair.second);
@@ -447,7 +406,6 @@ void MainWindow::draw_bressenham_ellipse(int x_center, int y_center, int a, int 
         polygon<< QPoint(point_pair.first,point_pair.second);
         if (d1 < 0) {
             d1 += b * b * (1 + 2 * x);
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
         } else {
             d1 += b * b * (2 * x + 3) + a * a * (2 - 2 * y);
             y--;
@@ -455,7 +413,6 @@ void MainWindow::draw_bressenham_ellipse(int x_center, int y_center, int a, int 
         x++;
     }
 
-<<<<<<< HEAD
     // Second part of the ellipse (where b^2 * x >= a^2 * y)
     double d2 = b * b * (x + 0.5) * (x + 0.5) + a * a * (y - 1) * (y - 1) - a * a * b * b;
     while (y >= 0) {
@@ -466,7 +423,6 @@ void MainWindow::draw_bressenham_ellipse(int x_center, int y_center, int a, int 
             polygon << QPoint(point_pair.first, point_pair.second);
         }
 
-=======
     double d2 = b * b * (x + 0.5) * (x + 0.5) + a * a * (y - 1) * (y - 1) - a * a * b * b;
     while (y >= 0) {
         pair<int,int> point_pair=plotPixel(x_center+x,y_center+y);
@@ -477,7 +433,6 @@ void MainWindow::draw_bressenham_ellipse(int x_center, int y_center, int a, int 
         polygon<< QPoint(point_pair.first,point_pair.second);
         point_pair=plotPixel(x_center+x,y_center-y);
         polygon<< QPoint(point_pair.first,point_pair.second);
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
         if (d2 < 0) {
             d2 += b * b * (2 * x + 2) + a * a * (-2 * y + 3);
             x++;
@@ -486,25 +441,18 @@ void MainWindow::draw_bressenham_ellipse(int x_center, int y_center, int a, int 
         }
         y--;
     }
-
-<<<<<<< HEAD
     // Draw all points in the bottom half of the ellipse at once using QPainter
     QPixmap canvas = ui->workArea->pixmap();
     QPainter painter(&canvas);
     painter.setPen(QPen(Qt::black, 1)); // Set the pen color to black or default
     painter.drawPoints(polygon); // Draw only the bottom half of the ellipse
-=======
     // Draw all points in one go using QPainter
     QPixmap canvas = ui->workArea->pixmap();
     QPainter painter(&canvas);
     painter.setPen(QPen(Qt::black, 1)); // Set pen color to black for the ellipse
     painter.drawPoints(polygon); // Draw the collected points
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
     ui->workArea->setPixmap(canvas); // Update the canvas
 }
-
-
-<<<<<<< HEAD
 
 void MainWindow::draw_bressenham_ellipse2(int x_center, int y_center, int a, int b, int r, int g, int b_color) {
     QPixmap canvas = ui->workArea->pixmap();
@@ -538,8 +486,6 @@ void MainWindow::draw_canvas(){
     draw_bressenham_ellipse2(-500,300,150,150,237, 189, 31);
 }
 
-=======
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
 void MainWindow::clear_canvas()
 {
     QPixmap canvas = ui->workArea->pixmap(Qt::ReturnByValue);
@@ -547,8 +493,5 @@ void MainWindow::clear_canvas()
         canvas.fill(Qt::white);
         ui->workArea->setPixmap(canvas);
     }
-<<<<<<< HEAD
     draw_canvas();
-=======
->>>>>>> 8c54090bc41678e31b804eea5a176a23d1d4b725
 }
